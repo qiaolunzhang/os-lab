@@ -30,6 +30,7 @@ Semaphores:
 - Create semaphores: semget()
 - Change semaphores: semop()
 
+
 ### sleep
 sleep(3) - Linux man page
 Name
@@ -66,11 +67,14 @@ if (!fork()) // same as: if (fork() == 0)
 }
 ```
 
-## sample1
+## part1
 
-## sample2
+## part2
+
+## part3 
 
 
 reference:
 - https://blog.csdn.net/onlyonename/article/details/8120050
 - https://stackoverflow.com/questions/13495783/if-fork-what-does-it-mean/13495848
+- https://blog.csdn.net/u011068702/article/details/55505977
