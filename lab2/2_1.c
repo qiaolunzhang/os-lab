@@ -1,20 +1,16 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <signal.h>
-#include <sys/wait.h>
 
 void func();
-
-int main(int argc, char const *argv[])
+int main()
 {
     int status;
     pid_t pid;
     signal(SIGUSR1, func);
-    pid = fork();
-    if (pid) {
-        printf("Parent: will send the signal.\n");
+    if (pid=fork()){
+        printf("Parent: will send signal.\n");
         kill(pid, SIGUSR1);
         wait(& status);
         printf("status=%d: Parent finished:\n", status);
@@ -26,6 +22,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void func() {
+void func()
+{
     printf("It is signal processing function.\n");
 }
