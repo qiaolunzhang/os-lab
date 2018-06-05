@@ -1,3 +1,19 @@
+# Socket Programming
+
+
+## TCP
+
+### Server
+
+Server                          Client
+- socket()                      socket()
+- bind()
+- listen()
+- accept()                      connect()
+- recv()                        send()
+- send()                        recv()
+- close()                       close()
+
 ### gotoxy
 To begin with, the correct code should have no spaces after the character format specifier (%c) and the opening second bracket, so that the modified line of code becomes -
 
