@@ -34,7 +34,7 @@ int main(int argc ,char **argv){
 	if(socket_conn >= 0){
 			printf("连接成功，开始通信！\n");
 			while(1){										
-				fgets(meg,MAXN,stdin);	inet_ntoa(B.sin_addr);	
+				fgets(meg,MAXN,stdin);	//inet_ntoa(B.sin_addr);	
 				len = strlen(meg);
 				if(meg[len-1] == '\n')	meg[len-1] = 0 ;
 				send(socket_conn,meg,strlen(meg)+1,0);			

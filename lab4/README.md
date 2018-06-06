@@ -14,6 +14,31 @@ Server                          Client
 - send()                        recv()
 - close()                       close()
 
+
+## 一些辅助函数
+
+### gets
+
+```
+#include <stdio.h>
+
+char *gets(char *s);
+```
+
+gets()  reads  a  line  from  stdin  into the buffer pointed to by s until either a terminating newline or EOF, which it
+replaces with a null byte ('\0').  No check for buffer overrun is performed (see BUGS below).
+
+Never  use gets().  Because it is impossible to tell without knowing the data in advance how many characters gets() will
+read, and because gets() will continue to store characters past the end of the buffer, it is extremely dangerous to use.
+It has been used to break computer security.  Use fgets() instead
+
+### fgets
+
+
+
+
+
+
 ### gotoxy
 To begin with, the correct code should have no spaces after the character format specifier (%c) and the opening second bracket, so that the modified line of code becomes -
 
@@ -36,3 +61,4 @@ So, yes, you may also replace the ‘f’ with ‘H’ and confirm that it also 
     printf("\e[%d;%df", y, x);	// \e is the escape character (ESC)
 
 Happy coding!
+

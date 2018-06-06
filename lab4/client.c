@@ -6,12 +6,13 @@
 #include<arpa/inet.h>
 #include<unistd.h>
 #include<stdlib.h>
-#define MAXN 4096 
+
+#define MAXLEN 4096 
 
 int main(int argc, char **argv){
 	int c_socket ,conn;
 	int len ;
-	char rev[MAXN] ,buf[MAXN];
+	char rev[MAXLEN] ,buf[MAXLEN];
 	struct sockaddr_in A ;
 	c_socket = socket(AF_INET,SOCK_STREAM,0);		
 	A.sin_family = AF_INET ;	
@@ -25,14 +26,14 @@ int main(int argc, char **argv){
 	if(conn >= 0){
 		printf("正在进行通信！\n");
 		while(1){
-			recv(c_socket,rev,MAXN,0);									
+			recv(c_socket,rev,MAXLEN,0);									
 			if(strcmp(rev,"quit") == 0){
 				printf("Server is Cancelling the communication!\n");
 				break ;
 
 			}
-                        printf("成功接收到了%d字符，字符为：%s\n",strlen(rev),rev);
-			fgets(buf,MAXN,stdin);
+                        printf("成功接收到了%ld字符，字符为：%s\n",strlen(rev),rev);
+			fgets(buf,MAXLEN,stdin);
 			len = strlen(buf) ;
 			if(buf[len-1] == '\n')	buf[len-1] = 0 ;
 			send(c_socket,buf,strlen(buf)+1,0);			
