@@ -16,14 +16,14 @@
 struct sockaddr_in c_addr;
 char fname[100];
 
-int main(int argc, char *argv[])
+int main()
 {
     int bytesReceived = 0;
     char recvBuff[1024];
     int connfd = 0;
     struct sockaddr_in serv_addr;
     int listenfd = 0,ret;
-    size_t clen=0;
+    socklen_t clen=0;
 
     listenfd = socket(AF_INET, SOCK_STREAM, 0);
     if(listenfd<0)
@@ -50,14 +50,6 @@ int main(int argc, char *argv[])
         printf("Failed to listen\n");
         return -1;
     }
-
-    if (argc < 2) 
-    {
-	    printf("Enter file name to send: ");
-        gets(fname);
-    }
-    else
-        strcpy(fname,argv[1]);
 
     while(1)
     {

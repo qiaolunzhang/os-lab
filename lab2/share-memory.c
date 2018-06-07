@@ -82,7 +82,7 @@ int main()
     if (!fork()) {
         while (1) {
         // The child
-            FILE *f1 = fopen("outpu.txt", "a");
+            FILE *f1 = fopen("output.txt", "a");
             P(sid2);
             fputs(segaddr, f1);
             fputc('\n', f1);
