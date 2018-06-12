@@ -20,7 +20,7 @@ int main()
     // 1秒(s) = 1000 000微秒(us)
     struct timeval tv1, tv2;
     struct timezone tz;
-    long unsigned int i, j, sec;
+    long unsigned int sec, usec;
     time_t time1, time2;
 
     memset(buf, '\0', sizeof(buf));
@@ -43,6 +43,9 @@ int main()
     printf("time2sec = %lu\n", tv2.tv_sec);
     printf("time2usec= %lu\n", tv2.tv_usec);
 
+    sec = tv2.tv_sec - tv1.tv_sec;
+    usec = tv2.tv_usec - tv1.tv_usec;
+    printf("Total sec plus usec is %lu usec\n", usec);
 
     return 0;
 }
