@@ -13,15 +13,14 @@ int main()
     int fp_write;
     fp_read = open("original",O_RDWR);
     fp_write = open("modified", O_RDWR);
-    char buf[100];
-    int count = 100;
+    char buf[1024];
+    int count = 1024;
     int count_read = 0;
 
     // 1秒(s) = 1000 000微秒(us)
     struct timeval tv1, tv2;
     struct timezone tz;
     long unsigned int sec, usec;
-    time_t time1, time2;
 
     memset(buf, '\0', sizeof(buf));
 
@@ -45,6 +44,7 @@ int main()
 
     sec = tv2.tv_sec - tv1.tv_sec;
     usec = tv2.tv_usec - tv1.tv_usec;
+    usec = usec + sec * 1000000;
     printf("Total sec plus usec is %lu usec\n", usec);
 
     return 0;
