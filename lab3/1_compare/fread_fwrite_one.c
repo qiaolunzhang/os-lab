@@ -15,7 +15,7 @@ int main()
         printf("Cannot open file test_fread_fwrite.txt\n");
     }
     char buf[1024];
-    int count = 1024;
+    int count = 1;
     int count_read = 0;
 
     struct timeval tv1, tv2;
