@@ -29,10 +29,17 @@ int main()
         // child
         close(pipe_fd[1]);
         char mesg_receive[100];
+        int len = 0;
         memset(mesg_receive,'\0',sizeof(mesg_receive));
         read(pipe_fd[0],mesg_receive,sizeof(mesg_receive));
-        fwrite(mesg_receive, 1, sizeof(mesg_receive), fp_write);
+        for (len = 0; len < 100; len++) {
+            if (mesg_receive[len] == '\0') 
+                break;
+        }
+        // 由于index=len处的已经不属于收到的字符了，所有len不用+1
+        fwrite(mesg_receive, sizeof(char), len, fp_write);
         fclose(fp_write);
+        fclose(fp_read);
     }
     else  {
         // 父进程，关闭读端
@@ -43,12 +50,14 @@ int main()
 
         count_read = fread(mesg_send, sizeof(char), 1024, fp_read);
         while (count_read > 0) {
-            write(pipe_fd[1], mesg_send, strlen(mesg_send));
+            write(pipe_fd[1], mesg_send, count_read);
+            //write(pipe_fd[1], mesg_send, strlen(mesg_send));
             //printf("%s", mesg_send);
             count_read = fread(mesg_send, sizeof(char), 1024, fp_read);
             sleep(1);
         }
         fclose(fp_read);
+        fclose(fp_write);
     }
 
     return 0;
