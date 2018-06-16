@@ -11,8 +11,8 @@ int main()
 {
     int fp_read;
     int fp_write;
-    fp_read = open("original",O_RDWR);
-    fp_write = open("modified", O_RDWR);
+    fp_read = open("test.txt",O_RDWR);
+    fp_write = open("test_read_write.txt", O_RDWR);
     char buf[1024];
     int count = 1024;
     int count_read = 0;
@@ -46,6 +46,8 @@ int main()
     usec = tv2.tv_usec - tv1.tv_usec;
     usec = usec + sec * 1000000;
     printf("Total sec plus usec is %lu usec\n", usec);
+    close(fp_read);
+    close(fp_write);
 
     return 0;
 }
